@@ -1,9 +1,17 @@
 # GUI NativeChat
 
-## Installation
+## Instalace
 ```bash
-git clone 
-cd GUINativeChat
-docker build -t guinativechat .
-docker run -p 19000:19000 -p 19001:19001 -p 19002:19002 -v $(PWD):/app guinativechat
+git clone https://github.com/Priban/GUINativeChat.git
 ```
+```bash
+cd GUINativeChat
+```
+```bash
+ipconfig
+```
+Nalezenou IPv4 adresu vložte do souboru `docker-compose.yml` do proměnné `REACT_NATIVE_PACKAGER_HOSTNAME`.
+```bash
+docker-compose up
+```
+Po spuštění kontejneru se zobrazí QR kód, kterým se připojíte pomocí aplikace Expo Go nebo si ve webovém prohlížeči otevřete http://localhost:19006
