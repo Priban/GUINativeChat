@@ -8,6 +8,9 @@ git clone https://github.com/Priban/GUINativeChat.git
 cd GUINativeChat
 ```
 ```bash
+npm i
+```
+```bash
 ipconfig
 ```
 Nalezenou IPv4 adresu vložte do souboru `docker-compose.yml` do proměnné `REACT_NATIVE_PACKAGER_HOSTNAME`.
