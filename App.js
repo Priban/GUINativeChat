@@ -26,8 +26,14 @@ export default function App() {
   }, []);
 
   const onPress = () => {
-    setMessages([...messages, { username: "Test", text: text }]);
+    socket.emit('message', { username: "Já", text: text });
     setText('');
+  }
+
+  const spam = () => {
+    const interval = setInterval(() => {
+      socket.emit('message', { username: "Já", text: "Spam" });
+    }, 1);
   }
 
   // 1. dokumentace socket.io
@@ -38,10 +44,10 @@ export default function App() {
   //    zpráva je ve formátu { username: "Já", text: "Olá" }
   // 5. přidat zprávu do messages
   // 6. enjoy
-  const register = async () => {
+  const register = async (username, password) => {
     const { data: { token } } = await axios.post('https://lprib.tech/register', {
-      username: "testinguser",
-      password: "test123sdf"
+      username,
+      password
     });
 
     const socket = io('https://lprib.tech', {
@@ -52,7 +58,7 @@ export default function App() {
     });
 
     socket.on('message', message => {
-      setMessages([...messages, message]);
+      setMessages(messages => [...messages, message]);
     });
 
     setSocket(socket);
@@ -61,6 +67,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Register register={register} />
+      <Button title="Spam" onPress={spam} />
       <View style={styles.messageTextContainer}>
         {
           messages.map((message, index) => (
@@ -102,5 +109,6 @@ const styles = StyleSheet.create({
     width: "100vw",
     justifyContent: "flex-end",
     alignItems: "flex-start"
+    
   }
 });
