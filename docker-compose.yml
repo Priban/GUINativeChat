@@ -10,7 +10,7 @@ services:
       - NODE_ENV=development
       - WATCHPACK_POLLING=true
       - EXPO_DEVTOOLS_LISTEN_ADDRESS=0.0.0.0
-      - REACT_NATIVE_PACKAGER_HOSTNAME=192.168.88.207
+      - REACT_NATIVE_PACKAGER_HOSTNAME=192.168.81.253
     tty: true
     ports:
       - '19000:19000'
